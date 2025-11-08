@@ -1,0 +1,497 @@
+/* Thiết lập cơ bản (Reset/Base Styles) */
+:root {
+    --primary-text-color: #ffffff;
+    --faded-text-color: rgba(255, 255, 255, 0.4);
+    --button-bg-color: rgba(255, 255, 255, 0.85);
+    --button-hover-bg-color: #ffffff;
+    --dark-overlay-color: rgba(0, 0, 0, 0.2); /* Độ phủ tối */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif; /* Sử dụng font đã import */
+}
+
+html, body {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Container Hình nền và Lớp phủ --- */
+
+.hero-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden; 
+    color: var(--primary-text-color);
+}
+
+.parallax-background {
+    position: absolute;
+    top: -50px; 
+    left: -50px;
+    width: calc(100% + 100px); 
+    height: calc(100% + 100px);
+    
+    background-image: url('bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    filter: blur(0px) brightness(0.9); 
+    z-index: 0; 
+    transition: transform 0.1s ease-out; 
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-overlay-color);
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4); 
+    opacity: 1; 
+    backdrop-filter: blur(20px); 
+}
+
+/* --- Thanh điều hướng (Navbar) --- */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    z-index: 10;
+}
+.nav-links {
+    margin-left: 50px; 
+}
+
+/* HIỆU ỨNG XOAY CHO LOGO */
+.logo-text {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    display: inline-block; /* Cho phép transform */
+    transition: transform 0.5s ease-in-out; 
+}
+
+.logo-text:hover {
+    transform: rotate(360deg); /* Xoay 360 độ */
+    cursor: pointer;
+}
+.nav-links a {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0 10px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.8;
+    padding: 6px 12px; 
+    border-radius: 20px; 
+    /* Thuộc tính này rất quan trọng để chuyển động mượt mà */
+    color: var(--primary-text-color);
+    
+}
+
+.btn-get-started {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px 20px;
+    border: 1px solid var(--primary-text-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s ease-out, transform 0.2s;
+}
+
+.btn-get-started:hover {
+    background-color: var(--primary-text-color);
+    color: #333;
+    box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 5px rgba(255, 255, 255, 0.3) inset;
+    transform: translateY(-2px); 
+}
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; 
+    z-index: 10;
+    width: 90%;
+    max-width: 1000px;
+}
+.main-title {
+    font-size: 80px; /* Cố định bằng px */
+    font-weight: 700;
+    line-height: 2.5; 
+    margin-bottom: 0px; 
+    text-shadow: 0 0 10px rgba(95, 95, 95, 0.25);
+    text-align: center; 
+    margin-left: 0; 
+    text-transform: uppercase;
+    position:relative;
+    left: -575px;
+}
+
+.second-title {
+    font-size: 60px; /* Cố định bằng px */
+    font-weight: 900;
+    line-height: 0.5; 
+    margin-top: 0; 
+    margin-bottom: 30px; 
+    /* Bỏ text-shadow cũ để JS quản lý */
+    text-shadow: 0 0 10px rgba(95, 95, 95, 0.25); 
+    text-align: center;
+    text-transform: uppercase;
+    position:relative;
+    left: -452px;
+    /* Thêm transition cho hiệu ứng chuyển đổi mượt mà hơn */
+    transition: text-shadow 0.1s ease-out; 
+    
+}
+.second-title2 {
+    font-size: 60px; /* Cố định bằng px */
+    font-weight: 900;
+    line-height: 1; 
+    margin-top: 0; 
+    margin-bottom: 30px; 
+    /* Bỏ text-shadow cũ để JS quản lý */
+    text-shadow: 0 0 10px rgba(95, 95, 95, 0.25); 
+    text-align: center;
+    text-transform: uppercase;
+    position:relative;
+    left: -465px;
+    /* Thêm transition cho hiệu ứng chuyển đổi mượt mà hơn */
+    transition: text-shadow 0.1s ease-out; 
+    
+    /* Cần thuộc tính này để JS có thể phân tách từng từ */
+    display: block; 
+}
+.faded {
+    color: var(--faded-text-color);
+    display: inline-block;
+    position: relative;
+    
+    /* Tắt toàn bộ hiệu ứng mask bị lỗi */
+    -webkit-mask-image: none;
+    mask-image: none;
+    
+    /* 1. Tạo bóng đổ MỜ LỚN (Mô phỏng các hạt lớn/mờ mịt xung quanh) */
+    /* text-shadow: [offset-x] [offset-y] [blur-radius] [color] */
+    text-shadow: 
+        /* Bóng chính (tạo độ dày/phân tán) */
+        0 0 10px rgba(255, 255, 255, 0.4),
+        /* Phân tán xa/rộng hơn */
+        -5px 0 15px rgba(255, 255, 255, 0.2), 
+        5px 0 15px rgba(255, 255, 255, 0.2),
+        /* Phân tán ngẫu nhiên trên/dưới */
+        -10px 10px 20px rgba(255, 255, 255, 0.1),
+        10px -10px 20px rgba(255, 255, 255, 0.1),
+        /* Thêm các chấm nhỏ phân tán xa */
+        20px 0 2px rgba(255, 255, 255, 0.05),
+        -20px 0 2px rgba(255, 255, 255, 0.05),
+        -25px 5px 3px rgba(255, 255, 255, 0.08),
+        25px -5px 3px rgba(255, 255, 255, 0.08);
+
+    /* 2. Áp dụng hiệu ứng rung nhẹ (optional) */
+    animation: disintegrate-pulse 4s infinite alternate;
+}
+@keyframes disintegrate-pulse {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    100% {
+        transform: translate(0.5px, -0.5px);
+        text-shadow: 
+            0 0 12px rgba(255, 255, 255, 0.5),
+            -4px 1px 16px rgba(255, 255, 255, 0.25);
+    }
+}
+.subtitle {
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px; 
+    font-weight: 400;
+    line-height: 2;
+    margin-bottom: 60px;
+    opacity: 0.9;
+    position:relative;
+    left: -525px;
+    text-align: left; /* Căn giữa */
+    
+    max-width: 650px; 
+    
+    margin-left: auto; 
+    margin-right: auto;
+}
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: absolute;
+    left: -350px;
+}
+
+.btn {
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s ease-out, transform 0.2s; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+}
+
+.btn-buy, .btn-cloud {
+    background-color: var(--button-bg-color);
+    color: #333;
+}
+
+.btn-buy:hover, .btn-cloud:hover {
+    background-color: var(--button-hover-bg-color);
+    box-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.8), 
+        0 4px 10px rgba(0, 0, 0, 0.6); 
+    transform: translateY(-2px); 
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color:#ffffff;
+    padding: 30px;
+    width: 450px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    color: #151717;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
+}
+.modal-overlay.active .form {
+    transform: scale(1);
+}
+
+.form a {
+    color: inherit;
+}
+
+::placeholder {
+    font-family: 'Inter', sans-serif;
+    color: #888;
+}
+
+.flex-column > label {
+    color: #151717;
+    font-weight: 600;
+}
+
+.inputForm {
+    border: 1.5px solid #ecedec;
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: 0.2s ease-in-out;
+}
+
+.input {
+    margin-left: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.inputForm:focus-within {
+    border: 1.5px solid #141414;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.flex-row > div > label {
+    font-size: 14px;
+    color: black;
+    font-weight: 400;
+}
+
+.span {
+    font-size: 14px;
+    margin-left: 5px;
+    color: #2d79f3;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button-submit {
+    margin: 20px 0 10px 0;
+    background-color: #1a1a1a;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.button-submit:hover {
+    background-color: #13131380;
+}
+
+.p {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.btn.google, .btn.apple { 
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+    border: 1px solid #ededef;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.btn.google:hover, .btn.apple:hover {
+    border: 1px solid #1f1f1f;
+}
+
+.btn.apple svg path {
+    fill: #151717;
+}
+
+/* Thêm media query cho mobile */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 50px; /* Giảm font-size */
+        line-height: 1.1;
+        left: 0; /* Reset left để căn giữa */
+        position: static; /* Thay đổi để tránh tràn */
+    }
+    .second-title, .second-title2 {
+        font-size: 40px; /* Giảm font-size */
+        line-height: 1.1;
+        left: 0; /* Reset left */
+        position: static;
+    }
+    .subtitle {
+        font-size: 16px; /* Giảm font-size */
+        left: 0; /* Reset left */
+        position: static;
+        text-align: center; /* Căn giữa */
+        max-width: 90%; /* Giảm max-width */
+    }
+    .cta-buttons {
+        position: static; /* Thay đổi để tránh absolute gây lỗi */
+        flex-direction: column; /* Xếp dọc */
+        gap: 10px;
+    }
+    .btn {
+        padding: 12px 30px; /* Giảm padding */
+        font-size: 16px;
+    }
+    .form {
+        width: 90%; /* Thu nhỏ form trên mobile */
+    }
+    .navbar {
+        padding: 20px 20px; /* Giảm padding */
+    }
+    .nav-links {
+        margin-left: 20px; /* Giảm margin */
+    }
+}
+
+/* From Uiverse.io by Tiagoadag */ 
+.card {
+    width: 450px;
+    height: 50px;
+    border-radius: 20px;
+    position:absolute;
+    margin-top: 0.25vw;
+    left: 37.5%;
+    z-index: 100;
+    perspective: 500px;
+    transition: all 0.4s ease;
+}
+.card:hover{
+    transform: scale(1.02) rotate(0deg) translate(0px, 0px) skewX(0deg);
+    box-shadow: 0 0px 30px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    filter: brightness(10);
+    color: #e4e4e4;
+    border-bottom-color: #d4d4d4;
+}
+
+.card2 {
+    height: 50px;
+    background-color: #1a1a1a10;
+    border-radius:20px;
+    transform: scale(0.98);
+    border-radius: 20px;
+}
+
+/* Thêm media query cho .card trên mobile */
+@media (max-width: 768px) {
+    .card {
+        width: 90%; /* Sử dụng % để responsive */
+        left: 5%; /* Điều chỉnh left */
+        margin-top: 10px; /* Thay margin-top từ vw sang px */
+    }
+}
