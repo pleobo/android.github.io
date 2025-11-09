@@ -6,34 +6,65 @@
     
     /* Thiết lập cho container để dễ dàng định vị khối 3D */
     position: fixed; 
-    top: 72.5%; /* Căn giữa theo chiều dọc */
-    right: 5.5%; /* Cách mép phải 5% */
+    top: 105.5%; /* Căn giữa theo chiều dọc */
+    right: 3.5%; /* Cách mép phải 5% */
     transform: translateY(-50%); /* Dịch chuyển ngược lại 50% chiều cao của nó để căn giữa hoàn hảo */
+    transition: 0.5s ease-in-out;
+}
+.pics:hover{
+    top:85.5%;
+    
 }
 
 .pic {
-    width: 300px;
+    width: 150px;
     height: 300px;
-    background:rgba(255, 255, 255,0.01);
-    border-radius: 35%;
+    background:rgba(255, 255, 255,0.05);
+    border-radius: 5%;
     /* CHUYỂN SANG FIXED VÀ LOẠI BỎ ĐỊNH VỊ GÂY LỖI */
     position: relative; /* Giữ relative để transform 3D hoạt động tốt */
     /* LOẠI BỎ: transform: translateX(-0%); */
     /* LOẠI BỎ: margin-top: -40vw; */
     /* LOẠI BỎ: left: 65%; */
-    
+    transition: 0.5s ease-in-out;
     transform-style: preserve-3d;
     will-change: transform;
-    transition: transform .5s;
     z-index: 1;
 }
 
 .pic:hover {
-    border-radius: 5%;
+    width: 300px;
     background:rgba(255, 255, 255,0.1);
     transform: translateZ(-10px) rotateX(20deg) rotateY(-20deg);
     box-shadow: 0px 0px 30px 1px rgba(255, 255, 255, 0.3);
-    transition: 0.5s ease-in-out;
+    
+}
+
+.pic1 {
+    width: 50px;
+    height: 15px;
+    background:rgba(255, 255, 255,0.05);
+    border-radius: 10%;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%,45%);
+    /* CHUYỂN SANG FIXED VÀ LOẠI BỎ ĐỊNH VỊ GÂY LỖI */
+    position: relative; /* Giữ relative để transform 3D hoạt động tốt */
+    /* LOẠI BỎ: transform: translateX(-0%); */
+    /* LOẠI BỎ: margin-top: -40vw; */
+    /* LOẠI BỎ: left: 65%; */
+
+    transition: 1.5s ease-in-out;
+    transform-style: preserve-3d;
+    will-change: transform;
+    z-index: 1;
+}
+
+.pic1:hover {
+    background:rgba(255, 255, 255,0.1);
+    transform: translateZ(-10px) rotateX(20deg) rotateY(-20deg);
+    box-shadow: 0px 0px 30px 1px rgba(255, 255, 255, 0.3);
+    
 }
 
 .pic_title {
@@ -44,7 +75,7 @@
     top: 20%;
     right: 75px;
     transform: translateY(-50%);
-    transition: transform .5s;
+
     font: 700 1.5rem monospace;
     text-shadow: -1px -1px 100 #000,
       1px -1px 0 #000,
@@ -68,7 +99,6 @@
     right: -25px;
     text-align: justify;
     transform: translateY(-50%);
-    transition: transform .5s;
     font: 700 1rem monospace;
     text-shadow: -1px -1px 100 #000,
       1px -1px 0 #000,
