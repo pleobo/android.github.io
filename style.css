@@ -141,7 +141,7 @@ a {
 .hero-content {
     position: absolute;
     top: 50%;
-    left: 60%;
+    left: 100%;
     transform: translate(-50%, -50%);
     text-align: center; 
     z-index: 10;
@@ -479,4 +479,5 @@ a {
         margin-top: 10px; /* Thay margin-top từ vw sang px */
     }
 }
+
 
