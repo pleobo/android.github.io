@@ -1,0 +1,598 @@
+/* ------------------------------------------- */
+/* --- Thiết lập cơ bản (Reset/Base Styles) --- */
+/* ------------------------------------------- */
+
+:root {
+    --primary-text-color: #ffffff;
+    --faded-text-color: rgba(255, 255, 255, 0.4);
+    --button-bg-color: rgba(255, 255, 255, 0.85);
+    --button-hover-bg-color: #ffffff;
+    /* --dark-overlay-color: rgba(0, 0, 0, 0.2); (Giá trị này bị ghi đè sau đó, nên có thể xóa nếu không dùng) */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ------------------------------------------- */
+/* --- Container Hình nền và Lớp phủ --- */
+/* ------------------------------------------- */
+
+.hero-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    color: var(--primary-text-color);
+}
+
+.parallax-background {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: calc(100% + 100px);
+    height: calc(100% + 100px);
+
+    background-image: url('bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    filter: brightness(0.9);
+    /* Đã xóa blur(0px) thừa */
+    z-index: 0;
+    transition: transform 0.1s ease-out;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Chỉ giữ lại giá trị ghi đè (0.4) và loại bỏ biến (0.2) bị trùng */
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    backdrop-filter: blur(20px);
+    /* Đã xóa opacity: 1; vì nó là giá trị mặc định của background-color */
+}
+
+/* ------------------------------------------- */
+/* --- Thanh điều hướng (Navbar) --- */
+/* ------------------------------------------- */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    z-index: 10;
+}
+
+.nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+
+}
+
+.logo-text {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: transform 0.5s ease-in-out;
+}
+
+.logo-text:hover {
+    transform: rotate(360deg);
+    cursor: pointer;
+}
+
+.nav-links a {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0 10px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.8;
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: var(--primary-text-color);
+    transition: 0.3s ease-in-out;
+
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.418);
+    box-shadow: rgba(255, 255, 255, 0.85) 0px 0px 10px;
+}
+
+/* Đã xóa .nav-links b vì nó là placeholder/thừa */
+
+.btn-get-started {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px 20px;
+    border: 1px solid var(--primary-text-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s ease-out, transform 0.2s;
+}
+
+.btn-get-started:hover {
+    background-color: var(--primary-text-color);
+    color: #333;
+    box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 5px rgba(255, 255, 255, 0.3) inset;
+    transform: translateY(-2px);
+}
+
+/* ------------------------------------------- */
+/* --- Khu vực Nội dung chính (Hero Content) --- */
+/* ------------------------------------------- */
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 2.5%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 90%;
+    max-width: 1200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 20px;
+}
+
+
+
+.main-title {
+    
+    max-width: 100%;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1.1;
+    text-shadow: 0 0 10px rgba(95, 95, 95, 0.25);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* Hợp nhất các style chung cho Tiêu đề phụ */
+.second-title,
+.second-title2 {
+    filter: blur(0px);
+    max-width: 100%;
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 1.1;
+    text-shadow: 0 0 10px rgba(95, 95, 95, 0.25);
+    text-transform: uppercase;
+    transition: text-shadow 0.1s ease-out;
+}
+
+.second-title {
+    margin-bottom: 15px;
+    /* Giữ khoảng cách riêng */
+}
+
+.second-title2 {
+    margin-bottom: 30px;
+    /* Giữ khoảng cách riêng */
+}
+
+
+.faded {
+    color: var(--faded-text-color);
+    display: inline-block;
+    position: relative;
+    /* Xóa các thuộc tính mask bị lỗi */
+    -webkit-mask-image: none;
+    mask-image: none;
+
+    /* Hiệu ứng bóng đổ MỜ LỚN (Disintegration/Glitch) */
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.4),
+        -5px 0 15px rgba(255, 255, 255, 0.2),
+        5px 0 15px rgba(255, 255, 255, 0.2),
+        -10px 10px 20px rgba(255, 255, 255, 0.1),
+        10px -10px 20px rgba(255, 255, 255, 0.1),
+        20px 0 2px rgba(255, 255, 255, 0.05),
+        -20px 0 2px rgba(255, 255, 255, 0.05),
+        -25px 5px 3px rgba(255, 255, 255, 0.08),
+        25px -5px 3px rgba(255, 255, 255, 0.08);
+
+    animation: disintegrate-pulse 4s infinite alternate;
+}
+
+@keyframes disintegrate-pulse {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    100% {
+        transform: translate(0.5px, -0.5px);
+        text-shadow:
+            0 0 12px rgba(255, 255, 255, 0.5),
+            -4px 1px 16px rgba(255, 255, 255, 0.25);
+    }
+}
+
+.subtitle {
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 2;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    text-align: left;
+    max-width: 650px;
+    /* Đã xóa margin-left: 0; margin-right: 0; vì đây là giá trị mặc định */
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    position: relative;
+}
+
+.btn {
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s ease-out, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Hợp nhất các selector dùng chung style */
+.btn-buy,
+.btn-cloud {
+    background-color: var(--button-bg-color);
+    color: #333;
+}
+
+.btn-buy:hover,
+.btn-cloud:hover {
+    background-color: var(--button-hover-bg-color);
+    box-shadow:
+        0 0 15px rgba(255, 255, 255, 0.8),
+        0 4px 10px rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+}
+
+/* ------------------------------------------- */
+/* --- Modal/Form Styles (Đã sửa Transition) --- */
+/* ------------------------------------------- */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    opacity: 0;
+    visibility: hidden;
+    /* Dùng visibility thay cho display: none; để transition hoạt động */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+.modal-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 30px;
+    width: 450px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    color: #151717;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
+}
+
+.modal-overlay.active .form {
+    transform: scale(1);
+}
+
+.form a {
+    color: inherit;
+}
+
+::placeholder {
+    font-family: 'Inter', sans-serif;
+    color: #888;
+}
+
+.flex-column>label {
+    color: #151717;
+    font-weight: 600;
+}
+
+.inputForm {
+    border: 1.5px solid #ecedec;
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: 0.2s ease-in-out;
+}
+
+.input {
+    margin-left: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.inputForm:focus-within {
+    border: 1.5px solid #141414;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.flex-row>div>label {
+    font-size: 14px;
+    color: black;
+    font-weight: 400;
+}
+
+.span {
+    font-size: 14px;
+    margin-left: 5px;
+    color: #2d79f3;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button-submit {
+    margin: 20px 0 10px 0;
+    background-color: #1a1a1a;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-submit:hover {
+    background-color: #13131380;
+}
+
+.p {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.btn.google,
+.btn.apple {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+    border: 1px solid #ededef;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.btn.google:hover,
+.btn.apple:hover {
+    border: 1px solid #1f1f1f;
+}
+
+.btn.apple svg path {
+    fill: #151717;
+}
+
+/* Các lớp .pic-title/loader không được sử dụng cho title nhưng giữ lại */
+.pic-title,
+.pic-title-2 {
+    max-width: 100%;
+    padding: 0 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    height: auto;
+}
+
+/* ------------------------------------------- */
+/* --- Loader Styles --- */
+/* ------------------------------------------- */
+
+.loader {
+    align-self: center;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    height: 50px;
+    z-index: 999;
+}
+
+.loader span {
+    width: 6px;
+    height: 100%;
+    background: #1b1b1b;
+    border-radius: 3px;
+    animation: bars 1.2s infinite ease-in-out;
+}
+
+.loader span:nth-child(1) {
+    animation-delay: -0.24s;
+}
+
+.loader span:nth-child(2) {
+    animation-delay: -0.12s;
+}
+
+@keyframes bars {
+
+    0%,
+    40%,
+    100% {
+        transform: scaleY(0.4);
+    }
+
+    20% {
+        transform: scaleY(1);
+    }
+}
+
+/* ------------------------------------------- */
+/* --- Media Queries (Đã tối ưu hóa) --- */
+/* ------------------------------------------- */
+
+@media (max-width: 1024px) {
+    .main-title {
+        font-size: 64px;
+    }
+
+    /* Đã gộp second-title và second-title2 */
+    .second-title,
+    .second-title2 {
+        font-size: 48px;
+    }
+
+    .subtitle {
+        line-height: 1.5;
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+
+    /* Đã xóa .pic{ opacity: 0%; } thừa */
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+        font-size: 20px;
+    }
+
+    .nav-links {
+        display: none;
+        /* Ẩn navigation links trên mobile */
+    }
+
+    .btn-get-started {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+    .hero-content {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    .main-title {
+        font-size: 40px;
+        margin-bottom: 5px;
+    }
+
+    .second-title,
+    .second-title2 {
+        font-size: 32px;
+        margin-bottom: 25px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+    .loader {
+        height: 40px;
+        gap: 4px;
+    }
+
+    .loader span {
+        width: 5px;
+    }
+
+    /* Đã xóa .pic-title-1, .pic-title-2 { opacity: 0; } thừa */
+}
+
+.page2 {
+    background: white;
+}

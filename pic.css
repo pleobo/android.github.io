@@ -1,0 +1,107 @@
+/* From Uiverse.io by Cornerstone-04 */ 
+.pics {
+    perspective: 500px;
+    /* Đảm bảo chỉ số Z là cao nhất để nó không bị ẩn bởi các phần tử khác */
+    z-index: 999;
+    /* Thiết lập cho container để dễ dàng định vị khối 3D */
+    position: fixed; 
+    top: 90%; /* Căn giữa theo chiều dọc */
+    right: 3.5%; /* Cách mép phải 5% */
+    transform: translateY(-50%); /* Dịch chuyển ngược lại 50% chiều cao của nó để căn giữa hoàn hảo */
+    transition: 0.5s ease-in-out;
+}
+.pics:hover{
+    top:85.5%;
+}
+
+.pic {
+    width: 50px;
+    height: 50px;
+    right: -17px;
+    bottom: -20px;
+    /* CHUYỂN SANG FIXED VÀ LOẠI BỎ ĐỊNH VỊ GÂY LỖI */
+    position: relative; /* Giữ relative để transform 3D hoạt động tốt */
+    /* LOẠI BỎ: transform: translateX(-0%); */
+    /* LOẠI BỎ: margin-top: -40vw; */
+    /* LOẠI BỎ: left: 65%; */
+    transition: 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    will-change: transform;
+    z-index: 1;
+}
+
+.pic:hover {
+    width: 300px;
+    height: 200px;
+    transform: rotateX(20deg) rotateY(-20deg); 
+}
+
+.pic1 {
+    position: absolute; /* Giữ relative để transform 3D hoạt động tốt */
+    /* LOẠI BỎ: transform: translateX(-0%); */
+    /* LOẠI BỎ: margin-top: -40vw; */
+    /* LOẠI BỎ: left: 65%; */
+    right: 50px;
+    bottom: 50px;
+    transition: 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    will-change: transform;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    filter: invert(100%);
+    background-repeat: no-repeat;
+    background-image: url(bot.png);
+    /* THỬ THÊM DÒNG NÀY: */
+    background-size: cover; 
+    z-index: 1;
+    transition: 0.5 ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.pic_title {
+  text-transform: uppercase;
+    opacity: 0%;
+    color: #fff;
+    position: absolute;
+    top: 20%;
+    right: 75px;
+    transform: translateY(-50%);
+
+    font: 700 1.5rem monospace;
+    text-shadow: -1px -1px 100 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+    z-index: 2; /* Đảm bảo tiêu đề nằm trên nền của thẻ */
+}
+
+.pic:hover .pic_title {
+    transform: translateZ(300px);
+    z-index: 2;
+    opacity: 100%;
+    transition: 0.75s ease-in-out;
+}
+.pic_title2 {
+  text-transform: uppercase;
+    opacity: 0%;
+    color: #fff;
+    position: absolute;
+    top: 45%;
+    right: 0px;
+    text-align: justify;
+    transform: translateY(-50%);
+    font: 700 1rem monospace;
+    text-shadow: -1px -1px 100 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+    z-index: 2; /* Đảm bảo tiêu đề nằm trên nền của thẻ */
+}
+.pic:hover .pic_title2 {
+    transform: translateZ(300px);
+    z-index: 2;
+    opacity: 50%;
+    transition: 0.75s ease-in-out;
+}
+
